@@ -32,12 +32,16 @@ function App() {
 
   return (
     <ChatContainer theme={isDarkMode ? darkTheme : lightTheme}>
-      <button
+      {/* <button
         className={isDarkMode ? 'btn-on' : 'btn-off'}
         onClick={toggleTheme}
       >
         {isDarkMode ? 'ON' : 'OFF'}
-      </button>
+      </button> */}
+      <label className="switch">
+        <input type="checkbox" onChange={toggleTheme} checked={isDarkMode} />
+        <span className="slider round"></span>
+      </label>
       <ChatBody>
         <header className="App-header">
           <SignOut />
@@ -60,7 +64,7 @@ return (
 
 
 function SignOut() {
-  return auth.currentUser &&<button onClick={()=> auth.signOut()}>Sign Out</button>
+  return auth.currentUser &&<button className='whatsapp-button' onClick={()=> auth.signOut()}>⛔</button>
   }
   
 
@@ -129,10 +133,10 @@ function SignOut() {
     const handleInputChange = (event) => {
       setInputValue(event.target.value);
     };
-    const handleFileInputChange = (event) => {
-      const file = event.target.files[0];
-      setImage(file);
-    };
+    // const handleFileInputChange = (event) => {
+    //   const file = event.target.files[0];
+    //   setImage(file);
+    // };
 
     if (!auth.currentUser) {
       return <SignIn />;
@@ -151,11 +155,11 @@ function SignOut() {
         </main>
         <InputContainer>
         <input value={inputValue} onChange={handleInputChange} placeholder="دوي على راسك"/>
-        <label htmlFor='file-input'>
+        {/* <label htmlFor='file-input'>
           <span>choose a file</span>
           <input id='file-input' type="file" onChange={handleFileInputChange}></input>
-        </label>
-        <button onClick={sendMessage}>Send</button>
+        </label> */}
+        <button onClick={sendMessage}>🕊</button>
         
         </InputContainer>
 
